@@ -13,7 +13,7 @@ The PySpark Job runs on AWS EMR, and the Data Pipeline is orchestrated by Apache
  
 ### Running the project:  
  -  Clone this repository
- - Edit the `dl.cfg` file with your AWS credentials and infrastructure configuration. Note: Follow the hints in the sample .cfg file
+ - Edit the `dl.cfg` file with your AWS credentials and infrastructure configuration. Note: Follow the hints in the dl .cfg file
  -  `cd` into airflow-pyspark-emr
  - Create and activate a virtualenv, docs: [venv documentation](https://docs.python.org/3/library/venv.html)   , then:
  - (venv) $ pip install -r requirements.txt
