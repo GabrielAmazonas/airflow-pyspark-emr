@@ -34,6 +34,15 @@ In the UI, two DAG's should be available:
 
 Turn them on and play with it.
 
+### Main files:
+ - airflow_home/plugins/spark_jobs - etl.py:
+ 
+     - This file has the PySpark logic and usage.
+ 
+ - airflow_home/plugins/aws_utils - emr_deployment.py:
+ 
+    - This file has the logic to control the AWS infrastructure needed for the job to run.
+
 
 ## Data Lakes with PySpark, EMR and S3
 
