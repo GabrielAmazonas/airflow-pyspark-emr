@@ -19,7 +19,7 @@ The PySpark Job runs on AWS EMR, and the Data Pipeline is orchestrated by Apache
  - (venv) $ pip install -r requirements.txt
  - Add AIRFLOW_HOME environment variable to ~/.bashrc, by adding the line:										
 
-    export AIRFLOW_HOME=`pwd`/airflow_home
+    export AIRFLOW_HOME=your_path_to/airflow-pyspark-emr/airflow_home
     to the end of the ~/.bashrc file
 
  -  Run `airflow initdb`
