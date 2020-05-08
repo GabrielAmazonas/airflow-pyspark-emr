@@ -188,6 +188,10 @@ def upload_code():
     s3_client.upload_file(etl_file, etl_bucket, 'etl.py')
 
 
+def wait_emr_job():
+    return 'TBD'
+
+
 def terminate_stale_clusters():
     # Config parser
     config = configparser.ConfigParser()
@@ -216,3 +220,5 @@ def terminate_stale_clusters():
         return 'Clusters in WAITING state terminated successfully'
 
     return 'No WAITING clusters found.'
+
+

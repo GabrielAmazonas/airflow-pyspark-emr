@@ -33,6 +33,16 @@ The PySpark Job runs on AWS EMR, and the Data Pipeline is orchestrated by Apache
     - Database needs to be accessed by 100+ people:
         s3 data can be accessed, for example, by using Amazon Athena or Redshift Spectrum. Which both allow access control mechanisms.
         Many other tools allow s3 data fetching similarly.
+- Data Model - Star Schema:
+    - **Dimension Tables**:
+    - **Table users**: users in the app
+        - Columns: user_id, first_name, last_name, gender, level
+    - **Table songs**: songs in music database
+        - Columns: song_id, title, artist_id, year, duration
+    - **Table artists**: artists in music database
+        - Columns: artist_id, name, location, lattitude, longitude
+    - **Table time**: timestamps of records in songplays broken down into specific units
+        - Columns: start_time, hour, day, week, month, year, weekday
         
 
  ### Requirements:
