@@ -50,11 +50,18 @@ The PySpark Job runs on AWS EMR, and the Data Pipeline is orchestrated by Apache
  - Python 3.6 or greater.
 
  
-### Running the project:  
+### Running the project:
+  
  -  Clone this repository
  - Edit the `dl.cfg` file with your AWS credentials and infrastructure configuration.
  `config.sh` is also available as a helper script to build your dl.cfg file
  -  `cd` into airflow-pyspark-emr
+ > With Docker:
+
+    docker build -t airflow:1 .
+    docker run -i -p 8080:8080 -t airflow:1 /bin/bash 
+    
+ > Without Docker:
  - Create and activate a virtualenv, docs: [venv documentation](https://docs.python.org/3/library/venv.html)   , then:
  - (venv) $ pip install -r requirements.txt
  - Add AIRFLOW_HOME environment variable to ~/.bashrc, by adding the line:										

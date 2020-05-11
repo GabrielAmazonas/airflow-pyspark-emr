@@ -1,7 +1,7 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
-from aws_utils.emr_deployment import terminate_stale_clusters
+from aws_utils.emr_operations import terminate_stale_clusters
 
 # Creating a simple dag, to be executed hourly
 dag = DAG(dag_id='terminate_emr_clusters', description='Simple tutorial DAG',

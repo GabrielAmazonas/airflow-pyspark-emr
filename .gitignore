@@ -1,4 +1,7 @@
 .idea
 venv
 __pycache__
+airflow_home/airflow.db
+airflow_home/airflow.cfg
+airflow_home/unittests.cfg
 

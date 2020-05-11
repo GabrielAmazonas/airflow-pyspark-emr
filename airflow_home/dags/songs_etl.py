@@ -2,8 +2,9 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
-from aws_utils.emr_deployment import create_iam_role, create_s3_buckets, upload_code, create_emr_cluster
-from aws_utils.s3_operations import check_output_quality
+from aws_utils.emr_operations import create_emr_cluster
+from aws_utils.iam_operations import create_iam_role
+from aws_utils.s3_operations import check_output_quality, upload_code, create_s3_buckets
 
 # Creates the songs_etl dag, to be executed daily.
 dag = DAG(dag_id='songs_etl', description='Simple tutorial DAG',
@@ -31,7 +32,7 @@ run_on_emr = PythonOperator(task_id='run_on_emr',
                             dag=dag)
 
 check_songs_quality = PythonOperator(task_id='check_songs_quality',
-                                     python_callable=check_output_quality('songs'),
+                                     python_callable=check_output_quality,
                                      dag=dag)
 
 # Definition of the DAG execution order
