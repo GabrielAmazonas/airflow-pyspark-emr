@@ -15,7 +15,8 @@ def create_emr_cluster():
     dl_input_data = config['DATALAKE']['INPUT_DATA']
     dl_output_data = config['DATALAKE']['OUTPUT_DATA']
 
-    etl_file = config['SPARK']['FILE_PATH']
+    cluster_name = config['EMR']['CLUSTER_NAME']
+
 
     # Emr Client
     emr_client = boto3.client(
@@ -26,7 +27,7 @@ def create_emr_cluster():
     )
 
     cluster_id = emr_client.run_job_flow(
-        Name='spark-emr-cluster',
+        Name=cluster_name,
         ReleaseLabel='emr-5.28.0',
         LogUri='s3://' + emr_log_bucket + '-us-west-2',
         Applications=[
@@ -105,7 +106,39 @@ def create_emr_cluster():
 
 
 def wait_emr_job():
-    return 'TBD'
+    config = configparser.ConfigParser()
+    config.read('airflow_home/dl.cfg')
+
+    cluster_name = config['EMR']['CLUSTER_NAME']
+    # Emr Client
+    emr_client = boto3.client(
+        'emr',
+        region_name='us-west-2',
+        aws_access_key_id=config['AWS']['AWS_ACCESS_KEY_ID'],
+        aws_secret_access_key=config['AWS']['AWS_SECRET_ACCESS_KEY']
+    )
+    waiter = emr_client.get_waiter("cluster_terminated")
+
+    cluster_id = ''
+    response = emr_client.list_clusters(
+        ClusterStates=[
+            'STARTING', 'BOOTSTRAPPING', 'RUNNING', 'WAITING', 'TERMINATING'
+        ]
+    )
+    for cluster in response['Clusters']:
+        if cluster['Name'] == cluster_name:
+            cluster_id = cluster['Id']
+            print('Cluster Id Found: ' + cluster_id)
+
+    if cluster_id == '':
+        raise KeyError('Cluster not found')
+
+    waiter.wait(
+        ClusterId=cluster_id,
+        WaiterConfig={
+            "Delay": 30,
+        }
+    )
 
 
 def terminate_stale_clusters():

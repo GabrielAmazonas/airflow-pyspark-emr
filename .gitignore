@@ -1,7 +1,10 @@
 .idea
 venv
 __pycache__
+
+# Airflow auto generated files
 airflow_home/airflow.db
 airflow_home/airflow.cfg
 airflow_home/unittests.cfg
+airflow_home/logs
 
