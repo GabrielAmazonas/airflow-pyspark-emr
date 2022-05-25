@@ -60,7 +60,7 @@ psycopg2-binary==2.8.5
 py4j==0.10.7
 pyarrow==0.17.0
 Pygments==2.6.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 PyMySQL==0.9.3
 pyrsistent==0.16.0
 python-daemon==2.1.2
