@@ -51,7 +51,7 @@ MarkupSafe==1.1.1
 marshmallow==2.21.0
 marshmallow-enum==1.5.1
 marshmallow-sqlalchemy==0.22.3
-numpy==1.18.2
+numpy==1.22.0
 pandas==1.0.3
 pendulum==1.4.4
 prison==0.1.3
